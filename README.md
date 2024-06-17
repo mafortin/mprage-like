@@ -110,7 +110,7 @@ If you use it in a publication, please cite the following paper:
 
 **This repository contains the code related to a submission that is still under review.**
 
-If you have any question regarding the usage of this code, or any suggestions to improve it, you can contact us at: marc.a.fortin@ntnu.no
+If you have any question regarding the usage of this code or any suggestions to improve it, you can contact us at: marc.a.fortin@ntnu.no
 
 
 
