@@ -99,7 +99,7 @@ where:
 
    - **Description**: *FastSurferVINN* is a submodule of *FastSurfer* (https://github.com/Deep-MI/FastSurfer), a neuroimaging software designed for the automatic segmentation and reconstruction of the cerebral cortex and subcortical structures at native sub-millimeter resolution of brain MR images.
    - **Usage**: Automatic brain segmentation at native sub-millimeter resolution of T1w and 'pseudo' T1w images
-   - **FastSurfer version used**: Docker container of version 2.0.0 (https://github.com/Deep-MI/FastSurfer/releases/tag/v2.0.0) with the `--seg_only` flag running on GPU. 
+   - **FastSurfer version used**: Docker container of version 2.1.1 (https://github.com/Deep-MI/FastSurfer/releases/tag/v2.0.0) with the `--seg_only` flag running on GPU. 
 
 ---
 
