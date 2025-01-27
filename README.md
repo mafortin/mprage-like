@@ -1,12 +1,13 @@
-# *MPRAGElike: a novel approach to generate pseudo T1w images from Multi-Contrast Gradient Echo images for brain segmentation* 
+# *MPRAGE<sub>like</sub>: a novel approach to generate T1w images from Multi-Contrast Gradient Echo images for brain segmentation* 
 
 ---
 
 ## Overview
 
-This repository contains the code required to produce MPRAGE*like* images directly from Multi-Parameter Mapping (MPM) or Variable Flip Angle (VFA) images without the need to calculate quantitative maps. This technique can become particularly interesting for long neuroimaging protocols with a MPM 
-protocol and where scan time can become particularly long. The MPRAGE*like* images have shown promising results in typical neuroimaging analysis tasks like automatic brain segmentation where high similarity was observed with actual MPRAGE images [see related publication under review from *Fortin 
-M.-A. et al.*, 2024]. 
+This repository contains the code required to produce MPRAGE*like* images directly from Multi-Parameter Mapping (MPM) or Variable Flip Angle (VFA) images without the need to calculate quantitative maps. 
+
+This technique can become particularly interesting for long neuroimaging protocols with a MPM protocol and where scan time can become particularly long. The MPRAGE*like* images have shown promising results in typical neuroimaging analysis tasks like automatic brain segmentation where high similarity was observed with actual MPRAGE images [see accepted publication in Magnetic Resonance In Medicine from *Fortin 
+M.-A. et al.*, 2025]. 
 
 ---
 
@@ -23,6 +24,7 @@ resemblance with an acquired T1w MPRAGE image (see figure below).
 
 1. Clone this repository.
 2. Create a virtual environment (i.e., with pip or conda) and install the required packages, which are provided in the *requirements.txt* file in this repository.
+
    - E.g., with conda:
    ```
    conda create --name env_name python=3.9
@@ -64,6 +66,7 @@ where:
   2) The NIfTI files of the different contrasts/images to be used by the ```get_mprage-like.py``` script are expected to be inside the same folder. Otherwise, the script won't be able to find and identify them properly.
   3) The different contrasts should be identified/tagged with their corresponding contrast names. For instance, the T1w images should have 't1' or 'T1' as part of their filenames. The same applies to PDw and MTw (i.e., 'pd'/'PD' and 'mt'/'MT' in their filenames).
   4) If multi-echo images ought to be used, they should have a 'eX' as part of their filenames (X being an integer corresponding to the echo number). For single echo images, no need to specify the echo number as part of the filename.
+  5) The images used in the related publication had a value range ranging from 0 to 4095. If that is not the case for your data, the optimal value for the regularization parameter (&lambda;) might be different from the one used in the publication, and we recommend finding a value better suited for your dataset.
 
 #### Coregistration
 
@@ -72,34 +75,29 @@ where:
 
 ---
 
-## External softwares used in the publication:
+## External softwares used in the related publication:
 
-- As part of the analysis pipeline described in the publication currently under review, several external softwares that were **not** developed as part of this work (and that also require additional python libraries than the ones provided in the *requirements.txt* here or other downloads) were used. It's important to mention that these external softwares are **not** required to compute MPRAGE*like* images, only to reproduce the complete analysis pipeline from the publication.
+- As part of the analysis pipeline described in the related publication, several external softwares that were **not** developed as part of this work (and that also require additional python libraries than the ones provided in the *requirements.txt* here or other downloads) were used. It's important to mention that these external softwares are **not** required to compute MPRAGE*like* images, only to reproduce the complete analysis pipeline from the publication.
   Therefore, in order to help users interested in recreating the same pipeline as the one described in the paper, we have decided to share all external softwares used with their respective functionality in the pipeline: 
 
-1) **dwidenoise**:
-    
-   - **Description**: *dwidenoise* is a denoising module of MRtrix3 (https://mrtrix.readthedocs.io/en/dev/reference/commands/dwidenoise.html) exploiting data redundancy in the PCA domain using the prior knowledge that the eigenspectrum of random covariance matrices is described by the universal Marchenko-Pastur (MP) distribution.
-   - **Usage**: Marchenko-Pastur PCA denoising of the MPM images
-   - **MRtrix3 version used**: v0.3 (https://www.mrtrix.org/)
 
-2) **hMRI**:
+1) **hMRI toolbox**:
 
    - **Description**: A toolbox for quantitative MRI and in vivo histology using MRI (hMRI) embedded in the Statistical Parametric Mapping (SPM: https://www.fil.ion.ucl.ac.uk/spm/) framework in MATLAB.
    - **Usage**: Coregistration of MPM images and creation of quantitative maps.
-   - **hMRI version used**: v0.3.0 (https://github.com/hMRI-group/hMRI-toolbox/releases/tag/v0.3.0)
+   - **hMRI version used**: v0.6.1 (https://github.com/hMRI-group/hMRI-toolbox/releases/tag/v0.3.0)
 
-3) **N4 bias field correction**:
+2) **N4 bias field correction**:
 
    - **Description**: The N4 bias field correction algorithm is a popular method for correcting low frequency intensity non-uniformity present in MRI image known as bias field. In this work, the N4 algorithm part of the ANTsPy python library was used (https://antspy.readthedocs.io/en/latest/utils.html) 
    - **Usage**: Correct MR images from receive bias inhomogeneities before segmentation.
    - **ANTsPy version used**: 0.4.2 (https://pypi.org/project/antspyx/)
 
-4) **FastSurferVINN**:
+3) **FastSurferVINN**:
 
    - **Description**: *FastSurferVINN* is a submodule of *FastSurfer* (https://github.com/Deep-MI/FastSurfer), a neuroimaging software designed for the automatic segmentation and reconstruction of the cerebral cortex and subcortical structures at native sub-millimeter resolution of brain MR images.
    - **Usage**: Automatic brain segmentation at native sub-millimeter resolution of T1w and 'pseudo' T1w images
-   - **FastSurfer version used**: Docker container of version 2.0.0 (https://github.com/Deep-MI/FastSurfer/releases/tag/v2.0.0) with the `--seg_only` flag running on GPU. 
+   - **FastSurfer version used**: Docker container of version 2.3.0 (https://github.com/Deep-MI/FastSurfer/releases/tag/v2.3.0) with the `--seg_only` flag running on GPU. 
 
 ---
 
@@ -108,7 +106,7 @@ where:
 This code is under Apache 2.0 licensing.
 If you use it in a publication, please cite the following paper:
 
-**This repository contains the code related to a submission that is still under review.**
+**This repository contains the code related to an accepted manuscript to Magnetic Resonance in Medicine to be published soon.**
 
 If you have any question regarding the usage of this code or any suggestions to improve it, you can contact us at: marc.a.fortin@ntnu.no
 
