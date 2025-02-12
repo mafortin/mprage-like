@@ -76,7 +76,7 @@ where:
 
 ## External softwares used in the related publication:
 
-As part of the analysis pipeline described in the related publication, several external softwares that were **not** developed as part of this work (and that also require additional python libraries than the ones provided in the *requirements.txt* here or other downloads) were used. It's important to mention that these external softwares are **not** required to compute MPRAGE*like* images, only to reproduce the complete analysis pipeline from the publication.
+As part of the analysis pipeline described in the related publication, several external softwares that were **not** developed as part of this work were used (to which additional python libraries than the ones provided in the *requirements.txt* here and other downloads are required). It's important to mention that these external softwares are **not** required to compute MPRAGE*like* images, only to reproduce the complete analysis pipeline from the publication.
   Therefore, in order to help users interested in recreating the same pipeline as the one described in the paper, we have decided to share all external softwares used with their respective functionality in the pipeline: 
 
 
@@ -84,7 +84,7 @@ As part of the analysis pipeline described in the related publication, several e
 
    - **Description**: A toolbox for quantitative MRI and in vivo histology using MRI (hMRI) embedded in the Statistical Parametric Mapping (SPM: https://www.fil.ion.ucl.ac.uk/spm/) framework in MATLAB.
    - **Usage**: Coregistration of MPM images and creation of quantitative maps.
-   - **hMRI version used**: v0.6.1 (https://github.com/hMRI-group/hMRI-toolbox/releases/tag/v0.3.0)
+   - **hMRI version used**: v0.6.1 ([https://github.com/hMRI-group/hMRI-toolbox/releases/tag/v0.6.1](https://github.com/hMRI-group/hMRI-toolbox/releases/tag/v0.6.1))
 
 2) **N4 bias field correction**:
 
@@ -95,7 +95,7 @@ As part of the analysis pipeline described in the related publication, several e
 3) **FastSurferVINN**:
 
    - **Description**: *FastSurferVINN* is a submodule of *FastSurfer* (https://github.com/Deep-MI/FastSurfer), a neuroimaging software designed for the automatic segmentation and reconstruction of the cerebral cortex and subcortical structures at native sub-millimeter resolution of brain MR images.
-   - **Usage**: Automatic brain segmentation at native sub-millimeter resolution of T1w and 'pseudo' T1w images
+   - **Usage**: Automatic brain segmentation at native sub-millimeter resolution of T1w and synthetic T1w images
    - **FastSurfer version used**: Docker container of version 2.3.0 (https://github.com/Deep-MI/FastSurfer/releases/tag/v2.3.0) with the `--seg_only` flag running on GPU. 
 
 ---
